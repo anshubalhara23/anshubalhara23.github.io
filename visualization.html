@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Power BI Projects | Anshu Balhara</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      color: #ffffff; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .header { margin-bottom: 3rem; text-align: center; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.5rem; color: #a855f7;
+      text-decoration: none; font-weight: 500; font-size: 0.95rem; margin-bottom: 2rem;
+      padding: 0.75rem 1.5rem; border-radius: 50px; background: rgba(168, 85, 247, 0.1);
+      backdrop-filter: blur(10px); border: 1px solid rgba(168, 85, 247, 0.2); transition: all 0.3s ease;
+    }
+    .back-link:hover {
+      background: rgba(168, 85, 247, 0.2); transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+    }
+    .section-title {
+      font-size: 3rem; font-weight: 700; margin-bottom: 1rem;
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-align: center;
+    }
+    .subtitle { font-size: 1.1rem; color: #a1a1aa; text-align: center; margin-bottom: 3rem; }
+    .projects-grid { display: flex; flex-direction: column; gap: 2rem; align-items: center; }
+    .project-card {
+      background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px);
+      border: 1px solid rgba(168, 85, 247, 0.1); border-radius: 20px; padding: 2rem;
+      position: relative; overflow: hidden; transition: all 0.4s ease; max-width: 900px; width: 100%;
+    }
+    .project-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #a855f7, #ec4899); border-radius: 20px 20px 0 0;
+    }
+    .project-card:hover {
+      transform: translateY(-8px); box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+    .project-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .project-number {
+      background: linear-gradient(135deg, #a855f7, #ec4899); color: white; width: 40px; height: 40px;
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.1rem;
+    }
+    .project-title { font-size: 1.4rem; font-weight: 600; color: #ffffff; }
+    .project-description { color: #d4d4d8; margin-bottom: 2rem; font-size: 1rem; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+    .tech-tag {
+      background: rgba(168, 85, 247, 0.1); color: #a855f7; padding: 0.4rem 0.8rem;
+      border-radius: 20px; font-size: 0.85rem; font-weight: 500; border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+    .project-toggles { margin-top: 1.5rem; }
+    .toggle-section { margin-bottom: 1rem; }
+    .toggle-btn {
+      width: 100%; display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+      background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 12px; color: #ffffff; font-size: 1rem; font-weight: 600;
+      cursor: pointer; transition: all 0.3s ease;
+    }
+    .toggle-btn:hover {
+      background: rgba(168, 85, 247, 0.2); transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+    }
+    .toggle-icon { font-size: 1.2rem; }
+    .toggle-text { flex: 1; text-align: left; }
+    .toggle-arrow { font-size: 0.8rem; transition: transform 0.3s ease; }
+    .toggle-btn.active .toggle-arrow { transform: rotate(180deg); }
+    .toggle-content {
+      max-height: 0; overflow: hidden; padding: 0 1.5rem; background: rgba(255, 255, 255, 0.02);
+      border-left: 1px solid rgba(168, 85, 247, 0.2); border-right: 1px solid rgba(168, 85, 247, 0.2);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.2); border-radius: 0 0 12px 12px;
+      transition: all 0.4s ease; margin-top: -1px;
+    }
+    .toggle-content.active { max-height: none; padding: 1.5rem; }
+    .toggle-content p { color: #d4d4d8; line-height: 1.7; margin-bottom: 1rem; }
+    .toggle-content ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    .toggle-content li { color: #d4d4d8; margin-bottom: 0.5rem; }
+    .toggle-content code {
+      background: rgba(168, 85, 247, 0.1); padding: 0.15rem 0.4rem; border-radius: 4px;
+      font-family: 'Courier New', monospace; color: #a855f7;
+    }
+    .github-link {
+      display: inline-flex; align-items: center; gap: 0.5rem; color: #a855f7; text-decoration: none;
+      font-weight: 600; font-size: 0.9rem; padding: 0.5rem 1rem; background: rgba(168, 85, 247, 0.1);
+      border-radius: 8px; border: 1px solid rgba(168, 85, 247, 0.2); transition: all 0.3s ease;
+    }
+    .github-link:hover {
+      background: rgba(168, 85, 247, 0.2); transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+    }
+    @media (max-width: 768px) {
+      .section-title { font-size: 2rem; }
+      .container { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+      <h1 class="section-title">Power BI Projects</h1>
+      <p class="subtitle">Dashboards that turn a clean data warehouse into answers business stakeholders can act on</p>
+    </div>
+
+    <div class="projects-grid">
+      <!-- Project 1: OlistEcom Dashboard -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-number">1</div>
+          <h3 class="project-title">OlistEcom — 17-Question Business Dashboard</h3>
+        </div>
+
+        <p class="project-description">
+          A 6-page, 28-visual Power BI dashboard built on top of the OlistEcom data warehouse,
+          designed to answer 17 real business questions about orders, revenue, customers, and sellers
+          on a Brazilian e-commerce marketplace.
+        </p>
+
+        <div class="tech-stack">
+          <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">DAX</span>
+          <span class="tech-tag">Data Modeling</span>
+          <span class="tech-tag">Star Schema</span>
+        </div>
+
+        <div class="project-toggles">
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">📄</span>
+              <span class="toggle-text">What This Project Does</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <p>
+                The dashboard sits on top of the Gold-layer star schema from the OlistEcom warehouse
+                (4 dimensions, 3 fact tables) and spans 6 pages covering an executive summary along
+                with deeper cuts by customer, revenue, state, and seller performance. In total it
+                answers 17 distinct business questions across 28 visuals.
+              </p>
+              <p>
+                Because the source data had multiple fact tables joined on <code>order_id</code>,
+                Power BI's auto-detected relationships initially created conflicting fact-to-fact
+                links — these were manually deleted and a dimension-to-dimension relationship cycle
+                was resolved so the model would calculate correctly.
+              </p>
+            </div>
+          </div>
+
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">⚙️</span>
+              <span class="toggle-text">Technical Details</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <p>
+                Date relationships were built using <code>DATEVALUE()</code> calculated columns
+                rather than relying on auto date/time. All DAX measures are organized in a dedicated
+                <code>_Measures</code> table to keep the model clean and easy to navigate. The date
+                dimension itself is generated inside Power BI using DAX's <code>CALENDAR()</code>
+                function rather than being loaded from the warehouse.
+              </p>
+              <p>
+                Full model documentation and screenshots are available in the GitHub repository below.
+              </p>
+              <a href="https://github.com/anshubalhara23/OlistEcom" class="github-link" target="_blank">
+                <span class="github-icon">⭐</span> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleSection(button) {
+      const content = button.nextElementSibling;
+      const isActive = content.classList.contains('active');
+      const projectCard = button.closest('.project-card');
+      const allToggleContents = projectCard.querySelectorAll('.toggle-content');
+      const allToggleButtons = projectCard.querySelectorAll('.toggle-btn');
+      allToggleContents.forEach(tc => tc.classList.remove('active'));
+      allToggleButtons.forEach(tb => tb.classList.remove('active'));
+      if (!isActive) {
+        content.classList.add('active');
+        button.classList.add('active');
+      }
+    }
+  </script>
+</body>
+</html>

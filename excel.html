@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Excel Projects | Anshu Balhara</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      color: #ffffff; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6; min-height: 100vh;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .header { margin-bottom: 3rem; text-align: center; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 0.5rem; color: #a855f7;
+      text-decoration: none; font-weight: 500; font-size: 0.95rem; margin-bottom: 2rem;
+      padding: 0.75rem 1.5rem; border-radius: 50px; background: rgba(168, 85, 247, 0.1);
+      backdrop-filter: blur(10px); border: 1px solid rgba(168, 85, 247, 0.2); transition: all 0.3s ease;
+    }
+    .back-link:hover {
+      background: rgba(168, 85, 247, 0.2); transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(168, 85, 247, 0.3);
+    }
+    .section-title {
+      font-size: 3rem; font-weight: 700; margin-bottom: 1rem;
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; text-align: center;
+    }
+    .subtitle { font-size: 1.1rem; color: #a1a1aa; text-align: center; margin-bottom: 3rem; }
+    .status-card {
+      max-width: 700px; margin: 0 auto; background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(10px); border: 1px solid rgba(168, 85, 247, 0.15);
+      border-radius: 20px; padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .status-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, #a855f7, #ec4899); border-radius: 20px 20px 0 0;
+    }
+    .status-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .status-badge {
+      display: inline-block; background: rgba(168, 85, 247, 0.15); color: #a855f7;
+      padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
+      margin-bottom: 1.5rem; border: 1px solid rgba(168, 85, 247, 0.3);
+    }
+    .status-text { color: #d4d4d8; font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .tech-tag {
+      background: rgba(168, 85, 247, 0.1); color: #a855f7; padding: 0.4rem 0.8rem;
+      border-radius: 20px; font-size: 0.85rem; font-weight: 500; border: 1px solid rgba(168, 85, 247, 0.2);
+    }
+    @media (max-width: 768px) {
+      .section-title { font-size: 2rem; }
+      .container { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
+      <h1 class="section-title">Excel Projects</h1>
+      <p class="subtitle">Business analysis and reporting built with Advanced Excel</p>
+    </div>
+
+    <div class="status-card">
+      <div class="status-icon">📈</div>
+      <div class="status-badge">Coming Soon</div>
+      <p class="status-text">Advanced Excel is part of my core toolkit alongside SQL Server and Power BI. I'm putting together a dedicated Excel project to showcase here — in the meantime, take a look at my SQL data warehouse and Power BI dashboard work.</p>
+      <div class="tech-stack">
+        <span class="tech-tag">Advanced Excel</span><span class="tech-tag">Business Analysis</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
