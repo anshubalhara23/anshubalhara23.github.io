@@ -30,30 +30,95 @@
       background-clip: text; text-align: center;
     }
     .subtitle { font-size: 1.1rem; color: #a1a1aa; text-align: center; margin-bottom: 3rem; }
-    .status-card {
-      max-width: 700px; margin: 0 auto; background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px); border: 1px solid rgba(168, 85, 247, 0.15);
-      border-radius: 20px; padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden;
+
+    .projects-grid { display: flex; flex-direction: column; gap: 2rem; align-items: center; }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px);
+      border: 1px solid rgba(168, 85, 247, 0.1); border-radius: 20px;
+      padding: 2rem; position: relative; overflow: hidden; transition: all 0.4s ease;
+      max-width: 900px; width: 100%;
     }
-    .status-card::before {
+    .project-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
       background: linear-gradient(90deg, #a855f7, #ec4899); border-radius: 20px 20px 0 0;
     }
-    .status-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .project-card:hover {
+      transform: translateY(-8px); box-shadow: 0 20px 40px rgba(168, 85, 247, 0.2);
+      border-color: rgba(168, 85, 247, 0.3);
+    }
+
+    .project-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .project-number {
+      background: linear-gradient(135deg, #a855f7, #ec4899); color: white;
+      width: 40px; height: 40px; border-radius: 12px; display: flex;
+      align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem;
+    }
+    .project-title { font-size: 1.4rem; font-weight: 600; color: #ffffff; }
     .status-badge {
       display: inline-block; background: rgba(168, 85, 247, 0.15); color: #a855f7;
-      padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600;
-      margin-bottom: 1.5rem; border: 1px solid rgba(168, 85, 247, 0.3);
+      padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+      margin-left: auto; border: 1px solid rgba(168, 85, 247, 0.3); white-space: nowrap;
     }
-    .status-text { color: #d4d4d8; font-size: 1.05rem; line-height: 1.7; margin-bottom: 1.5rem; }
-    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .project-description { color: #d4d4d8; margin-bottom: 2rem; font-size: 1rem; }
+
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
     .tech-tag {
       background: rgba(168, 85, 247, 0.1); color: #a855f7; padding: 0.4rem 0.8rem;
-      border-radius: 20px; font-size: 0.85rem; font-weight: 500; border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 20px; font-size: 0.85rem; font-weight: 500;
+      border: 1px solid rgba(168, 85, 247, 0.2);
     }
+
+    .project-toggles { margin-top: 1.5rem; }
+    .toggle-section { margin-bottom: 1rem; }
+    .toggle-btn {
+      width: 100%; display: flex; align-items: center; gap: 1rem; padding: 1rem 1.5rem;
+      background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 12px; color: #ffffff; font-size: 1rem; font-weight: 600;
+      cursor: pointer; transition: all 0.3s ease;
+    }
+    .toggle-btn:hover {
+      background: rgba(168, 85, 247, 0.2); transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(168, 85, 247, 0.2);
+    }
+    .toggle-icon { font-size: 1.2rem; }
+    .toggle-text { flex: 1; text-align: left; }
+    .toggle-arrow { font-size: 0.8rem; transition: transform 0.3s ease; }
+    .toggle-btn.active .toggle-arrow { transform: rotate(180deg); }
+
+    .toggle-content {
+      max-height: 0; overflow: hidden; padding: 0 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border-left: 1px solid rgba(168, 85, 247, 0.2);
+      border-right: 1px solid rgba(168, 85, 247, 0.2);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+      border-radius: 0 0 12px 12px; transition: all 0.4s ease; margin-top: -1px;
+    }
+    .toggle-content.active { max-height: none; padding: 1.5rem; }
+    .toggle-content p { color: #d4d4d8; line-height: 1.7; margin-bottom: 1rem; }
+    .toggle-content ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    .toggle-content li { color: #d4d4d8; margin-bottom: 0.5rem; }
+    .toggle-content code {
+      background: rgba(168, 85, 247, 0.1); padding: 0.15rem 0.4rem; border-radius: 4px;
+      font-family: 'Courier New', monospace; color: #a855f7;
+    }
+
+    .github-link {
+      display: inline-flex; align-items: center; gap: 0.5rem; color: #a855f7;
+      text-decoration: none; font-weight: 600; font-size: 0.9rem; padding: 0.5rem 1rem;
+      background: rgba(168, 85, 247, 0.1); border-radius: 8px;
+      border: 1px solid rgba(168, 85, 247, 0.2); transition: all 0.3s ease;
+    }
+    .github-link:hover {
+      background: rgba(168, 85, 247, 0.2); transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+    }
+
     @media (max-width: 768px) {
       .section-title { font-size: 2rem; }
       .container { padding: 1rem; }
+      .project-header { flex-wrap: wrap; }
+      .status-badge { margin-left: 0; }
     }
   </style>
 </head>
@@ -62,17 +127,111 @@
     <div class="header">
       <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
       <h1 class="section-title">Python Projects</h1>
-      <p class="subtitle">Data cleaning, analysis, and modeling projects built with Python</p>
+      <p class="subtitle">Data cleaning, analysis, and business intelligence built with Python</p>
     </div>
 
-    <div class="status-card">
-      <div class="status-icon">🐍</div>
-      <div class="status-badge">In Progress</div>
-      <p class="status-text">I'm currently building my second portfolio project in Python: a churn prediction and funnel drop-off analysis, using scikit-learn for modeling and a Streamlit app for an interactive, deployable interface. It complements my SQL/Power BI work on OlistEcom with a distinct, code-first narrative. Check back soon, or see my SQL and Power BI work in the meantime.</p>
-      <div class="tech-stack">
-        <span class="tech-tag">Python</span><span class="tech-tag">Pandas</span><span class="tech-tag">scikit-learn</span><span class="tech-tag">Streamlit</span>
+    <div class="projects-grid">
+      <!-- Project 1: Olist Python Analytics -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-number">1</div>
+          <h3 class="project-title">Olist E-Commerce Python Analytics — Raw-Data Business Intelligence</h3>
+          <span class="status-badge">In Progress</span>
+        </div>
+
+        <p class="project-description">
+          An independent, code-first analysis of the same Olist Brazilian e-commerce data behind my
+          SQL warehouse project — but starting entirely from the 9 raw transactional CSVs rather than
+          any already-cleaned tables. The goal is to demonstrate the full analyst workflow in Python:
+          auditing raw data, cleaning and validating it, and turning it into structured business
+          insight across five analytical areas.
+        </p>
+
+        <div class="tech-stack">
+          <span class="tech-tag">Python</span>
+          <span class="tech-tag">Pandas</span>
+          <span class="tech-tag">NumPy</span>
+          <span class="tech-tag">Matplotlib</span>
+          <span class="tech-tag">RFM Segmentation</span>
+          <span class="tech-tag">Cohort Analysis</span>
+        </div>
+
+        <div class="project-toggles">
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">📄</span>
+              <span class="toggle-text">What This Project Does</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <p>
+                Rather than reusing the already-treated Gold-layer tables from OlistEcom, this project
+                works from the 9 raw Olist CSVs (~1M+ combined records) independently, so the cleaning
+                and validation decisions are made fresh in Python rather than inherited from the SQL
+                pipeline.
+              </p>
+              <p><strong>Understand:</strong> profile every raw table (shape, dtypes, missing values,
+                duplicates, primary keys) before touching anything.</p>
+              <p><strong>Clean &amp; validate:</strong> handle each dataset individually — duplicate
+                detection, missing-value treatment, datetime standardization, and referential-integrity
+                checks (e.g. confirming every order item maps to a valid order, product, and seller)
+                before any merging happens.</p>
+              <p><strong>Analyze:</strong> build five purpose-specific analytical modules:</p>
+              <ul>
+                <li>Sales &amp; Revenue — revenue trends, MoM growth, top/bottom categories and states</li>
+                <li>Customer Intelligence — repeat-purchase rate, RFM segmentation, cohort retention, Pareto analysis</li>
+                <li>Seller Intelligence — top sellers, satisfaction vs. revenue, seller performance matrix</li>
+                <li>Fulfillment Intelligence — delivery delays, late-delivery rate, impact on review scores</li>
+                <li>Product Intelligence — price distribution, freight burden, price vs. satisfaction</li>
+              </ul>
+              <p><strong>Connect:</strong> a cross-business analysis stage links delivery delays, freight
+                cost, and seller performance to customer review scores, then translates the findings
+                into concrete business recommendations rather than stopping at charts.</p>
+            </div>
+          </div>
+
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">⚙️</span>
+              <span class="toggle-text">Technical Details</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <p>
+                Built as a series of Jupyter notebooks (raw exploration → cleaning → validation → five
+                analytical modules → cross-business analysis), using Pandas and NumPy for data handling
+                and Matplotlib for the supporting visuals. One-to-many relationships between orders,
+                order items, and payments are handled explicitly to avoid double-counting revenue when
+                tables are joined — one of the main data-quality risks in this dataset.
+              </p>
+              <p>
+                This project is currently in progress. The GitHub repository below will be updated as
+                notebooks are completed.
+              </p>
+              <a href="https://github.com/anshubalhara23" class="github-link" target="_blank">
+                <span class="github-icon">⭐</span> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
+  <script>
+    function toggleSection(button) {
+      const content = button.nextElementSibling;
+      const isActive = content.classList.contains('active');
+      const projectCard = button.closest('.project-card');
+      const allToggleContents = projectCard.querySelectorAll('.toggle-content');
+      const allToggleButtons = projectCard.querySelectorAll('.toggle-btn');
+      allToggleContents.forEach(tc => tc.classList.remove('active'));
+      allToggleButtons.forEach(tb => tb.classList.remove('active'));
+      if (!isActive) {
+        content.classList.add('active');
+        button.classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
