@@ -212,6 +212,76 @@
           </div>
         </div>
       </div>
+
+      <!-- Project 2: HR Analytics -->
+      <div class="project-card">
+        <div class="project-header">
+          <div class="project-number">2</div>
+          <h3 class="project-title">HR Analytics — Employee Attrition Analysis</h3>
+        </div>
+
+        <p class="project-description">
+          A SQL Server analysis of employee data aimed at understanding why people leave. Rather than
+          just reporting an overall attrition rate, the project tests specific hypotheses about which
+          factors — department, salary band, tenure — actually drive turnover, and segments employees
+          accordingly.
+        </p>
+
+        <div class="tech-stack">
+          <span class="tech-tag">SQL Server</span>
+          <span class="tech-tag">T-SQL</span>
+          <span class="tech-tag">CTEs</span>
+          <span class="tech-tag">Window Functions</span>
+          <span class="tech-tag">Data Segmentation</span>
+        </div>
+
+        <div class="project-toggles">
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">📄</span>
+              <span class="toggle-text">What This Project Does</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <p>
+                Starts from a hypothesis-driven question — <em>what is actually driving attrition
+                here?</em> — rather than jumping straight to dashboards.
+              </p>
+              <ul>
+                <li>Analyzed employee data to test hypotheses around attrition, identifying department, salary, and tenure as key drivers of turnover</li>
+                <li>Wrote complex SQL queries using JOINs, CTEs, window functions, and aggregations to isolate patterns across employee segments</li>
+                <li>Performed data segmentation based on department, salary, and tenure, and summarized findings into workforce-planning recommendations</li>
+              </ul>
+              <p>
+                The output is a set of workforce-planning recommendations grounded in the segments
+                where attrition risk is concentrated, rather than a single blended attrition number.
+              </p>
+            </div>
+          </div>
+
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">⚙️</span>
+              <span class="toggle-text">Technical Details</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <p>
+                Built entirely in T-SQL. Window functions and CTEs are used to isolate patterns within
+                employee segments (e.g. ranking departments or tenure bands by attrition rate) without
+                collapsing the underlying detail needed to explain <em>why</em> a segment is at risk,
+                not just <em>that</em> it is.
+              </p>
+              <p>
+                Full queries and segmentation logic are documented in the GitHub repository below.
+              </p>
+              <a href="https://github.com/anshubalhara23/HR-Analytics-SQL-Project" class="github-link" target="_blank">
+                <span class="github-icon">⭐</span> View on GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
