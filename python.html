@@ -53,6 +53,7 @@
       background: linear-gradient(135deg, #a855f7, #ec4899); color: white;
       width: 40px; height: 40px; border-radius: 12px; display: flex;
       align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem;
+      flex-shrink: 0;
     }
     .project-title { font-size: 1.4rem; font-weight: 600; color: #ffffff; }
     .status-badge {
@@ -114,6 +115,8 @@
       box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
     }
 
+    .github-row { margin-top: 1.5rem; }
+
     @media (max-width: 768px) {
       .section-title { font-size: 2rem; }
       .container { padding: 1rem; }
@@ -131,20 +134,21 @@
     </div>
 
     <div class="projects-grid">
+
       <!-- Project 1: Olist Python Analytics -->
       <div class="project-card">
         <div class="project-header">
           <div class="project-number">1</div>
-          <h3 class="project-title">Olist E-Commerce Python Analytics — Raw-Data Business Intelligence</h3>
-          <span class="status-badge">In Progress</span>
+          <h3 class="project-title">Olist E-Commerce Business Analytics — Customer, Sales &amp; Fulfillment Intelligence</h3>
+          <span class="status-badge">Notebooks 01–08</span>
         </div>
 
         <p class="project-description">
-          An independent, code-first analysis of the same Olist Brazilian e-commerce data behind my
-          SQL warehouse project — but starting entirely from the 9 raw transactional CSVs rather than
-          any already-cleaned tables. The goal is to demonstrate the full analyst workflow in Python:
-          auditing raw data, cleaning and validating it, and turning it into structured business
-          insight across five analytical areas.
+          An independent, code-first analysis of the same Olist Brazilian e-commerce data behind my SQL
+          warehouse project, starting from the 9 raw transactional CSVs instead of any already-cleaned
+          tables. It covers the full analyst workflow in Python: raw audit, cleaning and validation,
+          sales and revenue, customer and seller intelligence, fulfillment and delivery, a
+          cross-business synthesis, and a final visualization notebook.
         </p>
 
         <div class="tech-stack">
@@ -152,8 +156,9 @@
           <span class="tech-tag">Pandas</span>
           <span class="tech-tag">NumPy</span>
           <span class="tech-tag">Matplotlib</span>
+          <span class="tech-tag">Seaborn</span>
           <span class="tech-tag">RFM Segmentation</span>
-          <span class="tech-tag">Cohort Analysis</span>
+          <span class="tech-tag">Pareto Analysis</span>
         </div>
 
         <div class="project-toggles">
@@ -165,28 +170,41 @@
             </button>
             <div class="toggle-content">
               <p>
-                Rather than reusing the already-treated Gold-layer tables from OlistEcom, this project
-                works from the 9 raw Olist CSVs (~1M+ combined records) independently, so the cleaning
-                and validation decisions are made fresh in Python rather than inherited from the SQL
-                pipeline.
+                Rather than reusing the treated Gold-layer tables from OlistEcom, this project works from
+                the 9 raw Olist CSVs (~1M+ combined records), so the cleaning and validation decisions are
+                made fresh in Python instead of inherited from the SQL pipeline. Each notebook has its own
+                log with exact numbers, decisions, and caveats.
               </p>
-              <p><strong>Understand:</strong> profile every raw table (shape, dtypes, missing values,
-                duplicates, primary keys) before touching anything.</p>
-              <p><strong>Clean &amp; validate:</strong> handle each dataset individually — duplicate
-                detection, missing-value treatment, datetime standardization, and referential-integrity
-                checks (e.g. confirming every order item maps to a valid order, product, and seller)
-                before any merging happens.</p>
-              <p><strong>Analyze:</strong> build five purpose-specific analytical modules:</p>
+              <p><strong>01–03 Raw audit, cleaning, validation:</strong> profile every raw table, surface
+                the structural facts later work depends on (for example, <code>customer_id</code> is a
+                per-order key and <code>customer_unique_id</code> is the real person), produce the cleaned
+                tables, and confirm row counts and join integrity before anything trusts a merge.</p>
               <ul>
-                <li>Sales &amp; Revenue — revenue trends, MoM growth, top/bottom categories and states</li>
-                <li>Customer Intelligence — repeat-purchase rate, RFM segmentation, cohort retention, Pareto analysis</li>
-                <li>Seller Intelligence — top sellers, satisfaction vs. revenue, seller performance matrix</li>
-                <li>Fulfillment Intelligence — delivery delays, late-delivery rate, impact on review scores</li>
-                <li>Product Intelligence — price distribution, freight burden, price vs. satisfaction</li>
+                <li><strong>04 Sales &amp; Revenue:</strong> overall sales, sales over time, payments, category performance</li>
+                <li><strong>05 Customer &amp; Seller Intelligence:</strong> seller performance, customer value, customer acquisition trend, customer geography</li>
+                <li><strong>06 Fulfillment &amp; Delivery:</strong> delivery timeline breakdown, on-time vs late, geographic patterns, delivery trends</li>
+                <li><strong>07 Cross-Business Synthesis:</strong> questions that combine sales, customer/seller, and delivery lenses, which no single earlier notebook could answer</li>
+                <li><strong>08 Key Insights Visualization:</strong> 8 matplotlib/seaborn charts, each visualizing one finding already established in 04–07</li>
               </ul>
-              <p><strong>Connect:</strong> a cross-business analysis stage links delivery delays, freight
-                cost, and seller performance to customer review scores, then translates the findings
-                into concrete business recommendations rather than stopping at charts.</p>
+            </div>
+          </div>
+
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">🔍</span>
+              <span class="toggle-text">Key Findings</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <ul>
+                <li><strong>Revenue is concentrated:</strong> the top 3 categories make up 25.2% of revenue and the top 20 make up 83.9%. Seller concentration is even steeper.</li>
+                <li><strong>Repeat buying is not the engine:</strong> 97% of customers buy once, and one-time buyers drive order volume in essentially every month, so Olist runs on constant new-customer acquisition.</li>
+                <li><strong>Delivery performance is strong:</strong> 91.86% of orders arrive on time, with two real late-rate spikes (Nov 2017 and Feb/Mar 2018) in high-volume months, so they are not small-sample noise.</li>
+                <li><strong>Geography is the biggest delivery lever:</strong> customers in states with no local sellers wait about twice as long (22.04 vs 11.93 days), yet those states hold only 1.16% of revenue, so it is a customer-experience problem more than a revenue risk.</li>
+                <li><strong>Lateness costs retention:</strong> a late first delivery lowers the repeat rate (2.62% vs 3.13%).</li>
+                <li><strong>Freight-expensive items have a non-completion problem</strong>, with a much higher rate of non-delivered orders, not a lateness problem, so the fix is about why orders get canceled.</li>
+                <li><strong>"Reliable seller" depends on the threshold:</strong> among the top 50 sellers by revenue, 16 pass a strict reliability bar and 34 do not, but most of the 34 fail only on delay speed, and loose bars passed all 50.</li>
+              </ul>
             </div>
           </div>
 
@@ -198,23 +216,31 @@
             </button>
             <div class="toggle-content">
               <p>
-                Built as a series of Jupyter notebooks (raw exploration → cleaning → validation → five
-                analytical modules → cross-business analysis), using Pandas and NumPy for data handling
-                and Matplotlib for the supporting visuals. One-to-many relationships between orders,
-                order items, and payments are handled explicitly to avoid double-counting revenue when
-                tables are joined — one of the main data-quality risks in this dataset.
+                Built as a series of Jupyter notebooks using Pandas and NumPy for data handling and
+                Matplotlib/Seaborn for the visuals. Revenue is defined as item price plus freight, and
+                gross (all orders) and net (delivered only) figures are always reported as a labeled
+                pair. One-to-many relationships between orders, order items, and payments are handled
+                explicitly to avoid double-counting revenue on joins.
               </p>
               <p>
-                This project is currently in progress. The GitHub repository below will be updated as
-                notebooks are completed.
+                Two habits run through the whole project: every average is checked against its median
+                because right-skew is the norm in this data, and real order volume is checked before
+                trusting any monthly or categorical number, since several dramatic-looking figures
+                (like a "100% late rate" in 2016-09) turned out to be near-zero-sample artifacts. Near-empty
+                ramp-up and tail-off months are excluded from growth narratives. Five of the eight charts
+                read small pre-aggregated summary tables exported from earlier notebooks.
               </p>
-              <a href="https://github.com/anshubalhara23" class="github-link" target="_blank">
-                <span class="github-icon">⭐</span> View on GitHub
-              </a>
             </div>
+          </div>
+
+          <div class="github-row">
+            <a href="https://github.com/anshubalhara23/Olist-Ecommerce-Business-Analytics" class="github-link" target="_blank">
+              <span class="github-icon">⭐</span> View on GitHub
+            </a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
