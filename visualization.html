@@ -48,7 +48,7 @@
     .project-number {
       background: linear-gradient(135deg, #a855f7, #ec4899); color: white; width: 40px; height: 40px;
       border-radius: 12px; display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 1.1rem;
+      font-weight: 700; font-size: 1.1rem; flex-shrink: 0;
     }
     .project-title { font-size: 1.4rem; font-weight: 600; color: #ffffff; }
     .project-description { color: #d4d4d8; margin-bottom: 2rem; font-size: 1rem; }
@@ -81,7 +81,7 @@
     }
     .toggle-content.active { max-height: none; padding: 1.5rem; }
     .toggle-content p { color: #d4d4d8; line-height: 1.7; margin-bottom: 1rem; }
-    .toggle-content ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    .toggle-content ul, .toggle-content ol { margin-left: 1.5rem; margin-bottom: 1rem; }
     .toggle-content li { color: #d4d4d8; margin-bottom: 0.5rem; }
     .toggle-content code {
       background: rgba(168, 85, 247, 0.1); padding: 0.15rem 0.4rem; border-radius: 4px;
@@ -96,6 +96,8 @@
       background: rgba(168, 85, 247, 0.2); transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
     }
+    .github-row { margin-top: 1.5rem; }
+
     @media (max-width: 768px) {
       .section-title { font-size: 2rem; }
       .container { padding: 1rem; }
@@ -107,10 +109,11 @@
     <div class="header">
       <a href="index.html#projects" class="back-link">← Back to Portfolio</a>
       <h1 class="section-title">Power BI Projects</h1>
-      <p class="subtitle">Dashboards that turn a clean data warehouse into answers business stakeholders can act on</p>
+      <p class="subtitle">Interactive dashboards built around specific business questions, not generic charts</p>
     </div>
 
     <div class="projects-grid">
+
       <!-- Project 1: Data Jobs Skills Dashboard -->
       <div class="project-card">
         <div class="project-header">
@@ -119,34 +122,58 @@
         </div>
 
         <p class="project-description">
-          An interactive Power BI dashboard analyzing the data-job market — salary trends, hiring
-          patterns, and workforce distribution across platforms and job types — built to surface
-          which roles pay the most and where demand is concentrated.
+          An interactive Power BI dashboard analyzing job market trends, salary insights, and
+          employment patterns in the data industry. It lets a viewer explore job postings, salaries,
+          remote-work opportunities, hiring trends, and job benefits, with drill-through for detail on
+          a selected role.
         </p>
 
         <div class="tech-stack">
           <span class="tech-tag">Power BI</span>
+          <span class="tech-tag">Power Query</span>
           <span class="tech-tag">DAX</span>
+          <span class="tech-tag">Data Modeling</span>
           <span class="tech-tag">Drill-Through</span>
-          <span class="tech-tag">Data Cleaning</span>
         </div>
 
         <div class="project-toggles">
           <div class="toggle-section">
             <button class="toggle-btn" onclick="toggleSection(this)">
               <span class="toggle-icon">📄</span>
-              <span class="toggle-text">What This Project Does</span>
+              <span class="toggle-text">Main Dashboard</span>
               <span class="toggle-arrow">▼</span>
             </button>
             <div class="toggle-content">
               <p>
-                Developed an interactive Data Jobs Analytics Dashboard in Power BI to analyze salary
-                trends, hiring patterns, and workforce distribution.
+                The main page gives a high-level overview of the data job market, with dynamic
+                filtering and slicing across every visual.
               </p>
               <ul>
-                <li>Built stacked charts and drill-through pages to identify highest-paying jobs and compare salary distributions by platform and job type</li>
-                <li>Designed line charts with trend analysis and KPI cards for total job count, ratings, and median yearly salary reporting</li>
-                <li>Applied data cleaning, transformation, and filtering to prepare raw job-market data for analysis</li>
+                <li><strong>Job data table:</strong> job title, yearly salary, hourly salary, and job trends</li>
+                <li><strong>Stacked bar chart:</strong> highest-paying job roles by salary</li>
+                <li><strong>Line chart with trend line:</strong> job trends over time</li>
+                <li><strong>KPI cards:</strong> rating and total job count</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">🔎</span>
+              <span class="toggle-text">Drill-Through Page</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <p>
+                A drill-through page lets a viewer go from the overview straight into detail for a
+                selected job role.
+              </p>
+              <ul>
+                <li><strong>Median yearly salary card</strong> and <strong>median hourly salary gauge</strong> for the selected role</li>
+                <li><strong>Donut charts:</strong> work-from-home percentage, "no degree mentioned" percentage, and health insurance percentage</li>
+                <li><strong>Map:</strong> geographic distribution of job postings</li>
+                <li><strong>Platform stacked chart:</strong> postings across hiring platforms</li>
+                <li><strong>Area chart:</strong> job types such as full-time, part-time, contract, and remote</li>
               </ul>
             </div>
           </div>
@@ -159,21 +186,21 @@
             </button>
             <div class="toggle-content">
               <p>
-                Drill-through pages let a viewer go from a high-level salary comparison straight into
-                the detail behind a specific job type or platform, rather than cross-filtering a single
-                dense page. KPI cards track total job count, average ratings, and median yearly salary
-                alongside the trend and distribution visuals.
+                Workflow: data collection, cleaning and transformation in Power Query, data modeling,
+                DAX measure creation, dashboard design, drill-through implementation, and visualization
+                polish for usability.
               </p>
-              <p>
-                Full dashboard and data-prep details are documented in the GitHub repository below.
-              </p>
-              <a href="https://github.com/anshubalhara23/Data-Jobs-Skills-Dashboard" class="github-link" target="_blank">
-                <span class="github-icon">⭐</span> View on GitHub
-              </a>
             </div>
+          </div>
+
+          <div class="github-row">
+            <a href="https://github.com/anshubalhara23/Data-Jobs-Skills-Dashboard" class="github-link" target="_blank">
+              <span class="github-icon">⭐</span> View on GitHub
+            </a>
           </div>
         </div>
       </div>
+
       <!-- Project 2: OlistEcom Dashboard -->
       <div class="project-card">
         <div class="project-header">
@@ -182,9 +209,9 @@
         </div>
 
         <p class="project-description">
-          A 6-page, 28-visual Power BI dashboard built on top of the OlistEcom data warehouse,
-          designed to answer 17 real business questions about orders, revenue, customers, and sellers
-          on a Brazilian e-commerce marketplace.
+          A 6-page, 28-visual Power BI dashboard built on the Gold-layer star schema of the OlistEcom
+          data warehouse. Each page is organized around specific business questions about orders,
+          revenue, customers, delivery, and sellers on a Brazilian e-commerce marketplace.
         </p>
 
         <div class="tech-stack">
@@ -202,18 +229,36 @@
               <span class="toggle-arrow">▼</span>
             </button>
             <div class="toggle-content">
+              <p>The model sits on 4 dimensions and 3 fact tables and answers 17 business questions across six pages:</p>
+              <ol>
+                <li><strong>Executive Overview:</strong> revenue, orders, customers, AOV, monthly revenue trend, order status split, top states by revenue</li>
+                <li><strong>Sales &amp; Product Performance:</strong> top categories by revenue, freight-to-revenue ratio by category, top 10 products by revenue and by units sold</li>
+                <li><strong>Customer &amp; Geography:</strong> customer and revenue concentration by state, average revenue per customer, repeat vs one-time customers</li>
+                <li><strong>Delivery &amp; Fulfillment:</strong> average delivery time, on-time delivery rate, delivery time by state, seller shipping-deadline adherence</li>
+                <li><strong>Customer Satisfaction &amp; Payments:</strong> review score trend, review score vs delivery time, payment method breakdown, installment distribution</li>
+                <li><strong>Seller Performance:</strong> top sellers by revenue, seller freight ratio, seller geographic distribution, late shipment rates</li>
+              </ol>
               <p>
-                The dashboard sits on top of the Gold-layer star schema from the OlistEcom warehouse
-                (4 dimensions, 3 fact tables) and spans 6 pages covering an executive summary along
-                with deeper cuts by customer, revenue, state, and seller performance. In total it
-                answers 17 distinct business questions across 28 visuals.
+                One unexpected finding: freight cost as a share of revenue varies much more by category
+                than I assumed. Some categories quietly lose a far larger share of revenue to shipping,
+                which only became visible after building the freight-ratio measure instead of looking at
+                freight totals.
               </p>
-              <p>
-                Because the source data had multiple fact tables joined on <code>order_id</code>,
-                Power BI's auto-detected relationships initially created conflicting fact-to-fact
-                links — these were manually deleted and a dimension-to-dimension relationship cycle
-                was resolved so the model would calculate correctly.
-              </p>
+            </div>
+          </div>
+
+          <div class="toggle-section">
+            <button class="toggle-btn" onclick="toggleSection(this)">
+              <span class="toggle-icon">🧩</span>
+              <span class="toggle-text">Modeling Problems I Solved</span>
+              <span class="toggle-arrow">▼</span>
+            </button>
+            <div class="toggle-content">
+              <ul>
+                <li><strong>Unwanted auto-detected relationships:</strong> all three fact tables carry <code>order_id</code>, so Power BI wired direct fact-to-fact relationships. That created two paths between the same tables, and Power BI silently marked one inactive, so some slicers would not work. I deleted both, since facts should never connect directly in a star schema.</li>
+                <li><strong>A hidden dimension cycle:</strong> connecting <code>dim_geolocation</code> to both customers and sellers created two paths to <code>fact_order_items</code>. I traced the cycle manually, kept the customers side active, and dropped the sellers connection. Sellers keep their own city and state columns for filtering, so nothing was lost.</li>
+                <li><strong>Date relationships:</strong> <code>DimDate[Date]</code> is date-only while the fact timestamps include time, so I added <code>DATEVALUE()</code> calculated columns on each fact table to make the relationships connect.</li>
+              </ul>
             </div>
           </div>
 
@@ -225,22 +270,25 @@
             </button>
             <div class="toggle-content">
               <p>
-                Date relationships were built using <code>DATEVALUE()</code> calculated columns
-                rather than relying on auto date/time. All DAX measures are organized in a dedicated
-                <code>_Measures</code> table to keep the model clean and easy to navigate. The date
-                dimension itself is generated inside Power BI using DAX's <code>CALENDAR()</code>
-                function rather than being loaded from the warehouse.
+                All DAX measures live in a dedicated <code>_Measures</code> table to keep the model
+                easy to navigate. The date dimension is generated inside Power BI with DAX's
+                <code>CALENDAR()</code> rather than loaded from the warehouse, so the same logic is not
+                maintained in two places.
               </p>
               <p>
-                Full model documentation and screenshots are available in the GitHub repository below.
+                Full model documentation and screenshots are in the GitHub repository below.
               </p>
-              <a href="https://github.com/anshubalhara23/OlistEcom" class="github-link" target="_blank">
-                <span class="github-icon">⭐</span> View on GitHub
-              </a>
             </div>
+          </div>
+
+          <div class="github-row">
+            <a href="https://github.com/anshubalhara23/OlistEcom" class="github-link" target="_blank">
+              <span class="github-icon">⭐</span> View on GitHub
+            </a>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
